@@ -1,13 +1,10 @@
 ﻿import { Component } from 'angular2/core';
-@Compoent({
+@Component({
     selector: 'pm-app',
     template:`
     <div><h1>{{pageTitle}}</h1>
         <div>My First Component</div>
-    < / div>
-        <div><h2>{{pageTitle}}< / h2 >
-    <div>My First Component </div >
-    < / div>
+    </div>
      `
 })
 export class AppComponent {

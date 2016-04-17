@@ -1,4 +1,4 @@
-System.register([], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,18 +10,22 @@ System.register([], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
+    var core_1;
     var AppComponent;
     return {
-        setters:[],
+        setters:[
+            function (core_1_1) {
+                core_1 = core_1_1;
+            }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
                     this.pageTitle = 'Acme Product Management';
                 }
                 AppComponent = __decorate([
-                    Compoent({
+                    core_1.Component({
                         selector: 'pm-app',
-                        template: "\n    <div><h1>{{pageTitle}}</h1>\n        <div>My First Component</div>\n    < / div>\n        <div><h2>{{pageTitle}}< / h2 >\n    <div>My First Component </div >\n    < / div>\n     "
+                        template: "\n    <div><h1>{{pageTitle}}</h1>\n        <div>My First Component</div>\n    </div>\n     "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
