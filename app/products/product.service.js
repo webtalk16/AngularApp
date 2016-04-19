@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'rxjs/Observable'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,21 +10,22 @@ System.register(['angular2/core', 'rxjs/Observable'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, Observable_1;
+    var core_1, http_1, Observable_1;
     var ProductService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
             function (Observable_1_1) {
                 Observable_1 = Observable_1_1;
             }],
         execute: function() {
-            (Injectable);
-            from;
-            'angular2/core';
             ProductService = (function () {
+                //private _productUrl = 'https://appcard.com/api/images/{image-id}?size={w}x{h}';
                 function ProductService(_http) {
                     this._http = _http;
                     this._productUrl = 'api/products/products.json'; // temp - ADD HTTP url to webservice here!!!!!
@@ -40,11 +41,10 @@ System.register(['angular2/core', 'rxjs/Observable'], function(exports_1, contex
                     return Observable_1.Observable.throw(error.json().error || 'Server error');
                 };
                 ProductService = __decorate([
-                    Injectable(), 
-                    __metadata('design:paramtypes', [(typeof (_a = typeof core_1.Http !== 'undefined' && core_1.Http) === 'function' && _a) || Object])
+                    core_1.Injectable(), 
+                    __metadata('design:paramtypes', [http_1.Http])
                 ], ProductService);
                 return ProductService;
-                var _a;
             }());
             exports_1("ProductService", ProductService);
         }

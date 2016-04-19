@@ -1,10 +1,12 @@
-﻿import ( Injectable ) from 'angular2/core';
-import { Http, Response } from 'angular2/core';
+﻿import { Injectable } from 'angular2/core';
+import { Http, Response } from 'angular2/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ProductService {
     private _productUrl = 'api/products/products.json'; // temp - ADD HTTP url to webservice here!!!!!
+    //private _productUrl = 'https://appcard.com/api/images/{image-id}?size={w}x{h}';
+
     constructor(private _http: Http) { }
 
     getProducts(): Observable<any[]> {
