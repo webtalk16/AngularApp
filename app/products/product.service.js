@@ -24,21 +24,100 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                 Observable_1 = Observable_1_1;
             }],
         execute: function() {
+            // import localStorage from 'localStorage';
             ProductService = (function () {
-                //private _productUrl = 'https://appcard.com/api/images/{image-id}?size={w}x{h}';
                 function ProductService(_http) {
                     this._http = _http;
-                    this._productUrl = 'api/products/products.json'; // temp - ADD HTTP url to webservice here!!!!!
+                    //private _productUrl = 'https://appcard.com/api/merchants/124';
+                    //private _productUrl = 'https://appcard.com/api/merchants/124:443';
+                    this._tempUrl = 'api/products/products.json'; // temp - ADD HTTP url to webservice here!!!!!
+                    // Get Merchant Details
+                    // returns merchant name, logo-image - id, locations
+                    this.merchantId = '124';
+                    this._getMerchantDetailstUrl = 'https://appcard.com/api/merchants/{merchant-id}';
+                    this._getMerchantDetailstUrl2 = 'https://appcard.com/api/merchants/' + this.merchantId;
+                    // Get Images
+                    // returns images
+                    this.imageId = '22';
+                    this.imageSizeWidth = '120';
+                    this.imageSizeHeight = '50';
+                    this._getImagesUrl = 'https://appcard.com/api/images/' + this.imageId + '?size={' + this.imageSizeWidth + '}x{' + this.imageSizeHeight + '}';
+                    // Get Offers
+                    // returns merchant offers (prefer images.banner over images.legacy; use custom_text)
+                    this._getOffersUrl = 'https://appcard.com/api/users/me/offers/my-stores?location=0,0&sort=1&d=0&ts=0';
+                    // Sign-up
+                    this._postSignUpForm = 'https://appcard.com/api/users';
+                    /*
+                    creates user, paylod:
+                    {
+                      "username": "{email}",
+                      "password": "{pwd}",
+                      "birthday": "MM/DD/YYYY",
+                      "source": "micro-site"
+                    }
+                    */
+                    this._httpHeaders = new http_1.Headers();
+                    this.bodyInputData = 'input data'; // TEMP !!!!!!!!!!!!!!
                 }
-                ProductService.prototype.getProducts = function () {
-                    return this._http.get(this._productUrl)
+                ProductService.prototype.handleError = function (error) {
+                    console.error(error);
+                    //console.log("" + error.id_token)
+                    return Observable_1.Observable.throw(error.json().error || 'Server error');
+                };
+                ProductService.prototype.login = function () {
+                    this._httpHeaders.append('Content-Type', 'application/json');
+                    this._httpHeaders.append('Authorization', 'Basic ' +
+                        btoa('jimmyjlevy@hotmail.com:Ap1632316'));
+                    this._httpHeaders.append('Access-Control-Allow-Origin', '*');
+                    return this._http.get(this._tempUrl, { headers: this._httpHeaders })
+                        .map(function (response) { return response.json(); })
+                        .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
+                        .do(function (data) { return console.log("TODO add -- localStorage.setItem('auth_token', response.Token)"); })
+                        .catch(this.handleError);
+                };
+                ProductService.prototype.getMerchantDetails = function () {
+                    this._httpHeaders.append('Content-Type', 'application/json');
+                    this._httpHeaders.append('Authorization', 'Basic ' +
+                        btoa('jimmyjlevy@hotmail.com:Ap1632316'));
+                    this._httpHeaders.append('Access-Control-Allow-Origin', '*');
+                    return this._http.get(this._tempUrl, { headers: this._httpHeaders })
                         .map(function (response) { return response.json(); })
                         .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
                         .catch(this.handleError);
                 };
-                ProductService.prototype.handleError = function (error) {
-                    console.error(error);
-                    return Observable_1.Observable.throw(error.json().error || 'Server error');
+                ProductService.prototype.getOffers = function () {
+                    this._httpHeaders.append('Content-Type', 'application/json');
+                    this._httpHeaders.append('Authorization', 'Basic ' +
+                        btoa('jimmyjlevy@hotmail.com:Ap1632316'));
+                    this._httpHeaders.append('Access-Control-Allow-Origin', '*');
+                    return this._http.get(this._tempUrl, { headers: this._httpHeaders })
+                        .map(function (response) { return response.json(); })
+                        .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
+                        .catch(this.handleError);
+                };
+                ProductService.prototype.getImages = function () {
+                    this._httpHeaders.append('Content-Type', 'application/json');
+                    // let authToken = localStorage.getItem('auth_token');
+                    //  _httpHeaders.append('Authorization', `Bearer ${authToken}`);
+                    this._httpHeaders.append('Authorization', 'Basic ' +
+                        btoa('jimmyjlevy@hotmail.com:Ap1632316'));
+                    this._httpHeaders.append('Access-Control-Allow-Origin', '*');
+                    return this._http.get(this._tempUrl, { headers: this._httpHeaders })
+                        .map(function (response) { return response.json(); })
+                        .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
+                        .catch(this.handleError);
+                };
+                ProductService.prototype.signUp = function () {
+                    this._httpHeaders.append('Content-Type', 'application/json');
+                    // let authToken = localStorage.getItem('auth_token');
+                    //  _httpHeaders.append('Authorization', `Bearer ${authToken}`);
+                    this._httpHeaders.append('Authorization', 'Basic ' +
+                        btoa('jimmyjlevy@hotmail.com:Ap1632316'));
+                    this._httpHeaders.append('Access-Control-Allow-Origin', '*');
+                    return this._http.post(this._tempUrl, 'temp-bodyInputData', { headers: this._httpHeaders })
+                        .map(function (response) { return response.json(); })
+                        .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
+                        .catch(this.handleError);
                 };
                 ProductService = __decorate([
                     core_1.Injectable(), 

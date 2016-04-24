@@ -5,8 +5,11 @@ import { ROUTER_PROVIDERS, RouteConfig, ROUTER_DIRECTIVES } from 'angular2/route
 
 import { ProductListComponent } from './products/product-list.component';
 import { ProductService } from './products/product.service';
-import { GeneralInfoComponent } from './home/general-info.component';
+import { SignUpComponent } from './home/sign-up.component';
 import { ProductDetailComponent } from './products/product-detail.component';
+
+import {enableProdMode} from 'angular2/core';
+enableProdMode();
 
 @Component({
     selector: 'pm-app',
@@ -14,12 +17,20 @@ import { ProductDetailComponent } from './products/product-detail.component';
     <div>
         <nav class='navbar navbar-default' style='background-color:#3d85c6;border-color:#000000'>
             <div class='container-fluid' style='padding:10px 0px;'>
-                <a class='navbar-brand' style='padding:0px;margin-left:4%'><img src='https://www.google.co.il/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png' class='img-responsive' style='max-height:100%;' /></a>
-                <ul class='nav navbar-nav' style='float:right;background-color:#FFFFFF;border:1px solid #000000; margin-right:4%;'>
-                    <li><a [routerLink]="['GeneralInfo']" style='border-right:1px solid #000000; padding-bottom:0px;padding-top:0px;margin-bottom:15px;margin-top:15px;'>General Info</a></li>
-                    <li><a [routerLink]="['Products']" style='border-right:1px solid #000000; padding-bottom:0px;padding-top:0px;margin-bottom:15px;margin-top:15px;'>Offers</a></li>
-                    <li><a [routerLink]="['ProductDetail']" style='padding-bottom:0px;padding-top:0px;margin-bottom:15px;margin-top:15px;'>Sign Up</a></li>
-                </ul>
+                <div class='navbar-header'>
+                    <button class='btn btn-success navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
+                        <span class='glyphicon glyphicon-menu-hamburger'></span>
+                    </button>
+                    <a class='navbar-brand' style='padding:0px;margin-left:4%'><img src='https://www.google.co.il/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png' class='img-responsive' style='max-height:100%;' /></a>
+                </div>
+                
+                <div id='collapseMenuDiv' class='navbar-collapse collapse'>
+                    <ul class='nav navbar-nav navbar-right' style='background-color:#FFFFFF;border:1px solid #000000; margin-right:4%;'>
+                        <li><a [routerLink]="['Products']" style='border-right:1px solid #000000; padding-bottom:0px;padding-top:0px;margin-bottom:15px;margin-top:15px;'>General Info</a></li>
+                        <li><a [routerLink]="['ProductDetail']" style='border-right:1px solid #000000; padding-bottom:0px;padding-top:0px;margin-bottom:15px;margin-top:15px;'>Offers</a></li>
+                        <li><a [routerLink]="['SignUp']" style='padding-bottom:0px;padding-top:0px;margin-bottom:15px;margin-top:15px;'>Sign Up</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
         <div class='container'>
@@ -37,9 +48,9 @@ import { ProductDetailComponent } from './products/product-detail.component';
                 ROUTER_PROVIDERS]
 })
 @RouteConfig([
-        { path: '/general-info', name: 'GeneralInfo', component: GeneralInfoComponent, useAsDefault: true },
-        { path: '/products', name: 'Products', component: ProductListComponent },
-        { path: '/product-detail', name: 'ProductDetail', component: ProductDetailComponent }
+        { path: '/stores/merchant-id/merchant-name/sign-up', name: 'SignUp', component: SignUpComponent },
+        { path: '/stores/merchant-id/merchant-name', name: 'Products', component: ProductListComponent, useAsDefault: true },
+        { path: '/stores/merchant-id/merchant-name/offers', name: 'ProductDetail', component: ProductDetailComponent }
 ])
 export class AppComponent {
     pageTitle: string = 'Merchant Name';

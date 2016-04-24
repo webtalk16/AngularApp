@@ -11,27 +11,27 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var GeneralInfoComponent;
+    var SignUpComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            GeneralInfoComponent = (function () {
-                function GeneralInfoComponent() {
-                    this.pageTitle = "General Info";
+            SignUpComponent = (function () {
+                function SignUpComponent() {
+                    this.pageTitle = "Sign-up";
                 }
-                GeneralInfoComponent = __decorate([
+                SignUpComponent = __decorate([
                     core_1.Component({
-                        templateUrl: 'app/home/general-info.component.html'
+                        templateUrl: 'app/home/sign-up.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
-                ], GeneralInfoComponent);
-                return GeneralInfoComponent;
+                ], SignUpComponent);
+                return SignUpComponent;
             }());
-            exports_1("GeneralInfoComponent", GeneralInfoComponent);
+            exports_1("SignUpComponent", SignUpComponent);
         }
     }
 });
-//# sourceMappingURL=general-info.component.js.map
+//# sourceMappingURL=sign-up.component.js.map

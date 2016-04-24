@@ -44,7 +44,7 @@ System.register(['angular2/core', 'angular2/router', './product-filter.pipe', '.
                 ProductListComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     console.log('In OnInit');
-                    this._productService.getProducts()
+                    this._productService.login()
                         .subscribe(function (products) { return _this.products = products; }, function (error) { return _this.errorMessage = error; });
                 };
                 ProductListComponent = __decorate([
