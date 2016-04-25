@@ -1,18 +1,19 @@
 ﻿import { Component } from 'angular2/core';
 import { RouteParams, Router } from 'angular2/router';
-import { ProductService } from '../products/product.service';
+import { MerchantService } from '../merchants/merchant.service';
 
 @Component({
-    templateUrl: 'app/products/product-detail.component.html'
+    templateUrl: 'app/merchants/merchant-offers.component.html'
 })
-export class ProductDetailComponent {
-    pageTitle: string = 'Product Detail';
+export class MerchantOffersComponent {
+    pageTitle: string = 'Merchant Offers';
+    imageWidth: string = "100%";
     imageHeight: number = 100;
     imageMargin: number = 2;
     errorMessage: string;
     offers: any[]; 
 
-    constructor(private _productService: ProductService,
+    constructor(private _merchantService: MerchantService,
                 private _routeParams: RouteParams,
                 private _router: Router) {
         let id = +this._routeParams.get('id');
@@ -25,7 +26,7 @@ export class ProductDetailComponent {
 
     ngOnInit(): void {
         console.log('In OnInit');
-        this._productService.getOffers()
+        this._merchantService.getOffers()
             .subscribe(
             offers => this.offers = offers,
             error => this.errorMessage = <any>error);

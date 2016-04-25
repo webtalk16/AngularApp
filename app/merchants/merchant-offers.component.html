@@ -1,0 +1,34 @@
+﻿<div class="panel panel-primary">
+    <!--
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+    -->
+
+    <div class='panel-body'>
+        <div class="row">
+            <div *ngFor="#offer of offers" class="col-md-4">
+                <div style="border:1px solid gray; margin:10px;">
+                    <div>
+                        <img [src]="offer.imageUrl"
+                             [title]="offer.productName"
+                             [style.width]="imageWidth"
+                             [style.height.px]="imageHeight"
+                             [style.margin.px]="imageMargin" />
+                    </div>
+                    <div class="panel-footer text-center">
+                        <span>
+                            {{ offer.productName }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <a class="btn btn-default" (click)="onBack()">
+            <i class="glyphicon glyphicon-chevron-left"></i> General Info
+        </a>
+    </div>
+</div>

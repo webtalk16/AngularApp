@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, http_1, Observable_1;
-    var ProductService;
+    var MerchantService;
     return {
         setters:[
             function (core_1_1) {
@@ -25,8 +25,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
             }],
         execute: function() {
             // import localStorage from 'localStorage';
-            ProductService = (function () {
-                function ProductService(_http) {
+            MerchantService = (function () {
+                function MerchantService(_http) {
                     this._http = _http;
                     //private _productUrl = 'https://appcard.com/api/merchants/124';
                     //private _productUrl = 'https://appcard.com/api/merchants/124:443';
@@ -34,8 +34,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     // Get Merchant Details
                     // returns merchant name, logo-image - id, locations
                     this.merchantId = '124';
-                    this._getMerchantDetailstUrl = 'https://appcard.com/api/merchants/{merchant-id}';
-                    this._getMerchantDetailstUrl2 = 'https://appcard.com/api/merchants/' + this.merchantId;
+                    this._getMerchantDetailsUrl = 'https://appcard.com/api/merchants/{merchant-id}';
+                    this._getMerchantDetailsUrl2 = 'https://appcard.com/api/merchants/' + this.merchantId;
                     // Get Images
                     // returns images
                     this.imageId = '22';
@@ -59,12 +59,12 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     this._httpHeaders = new http_1.Headers();
                     this.bodyInputData = 'input data'; // TEMP !!!!!!!!!!!!!!
                 }
-                ProductService.prototype.handleError = function (error) {
+                MerchantService.prototype.handleError = function (error) {
                     console.error(error);
                     //console.log("" + error.id_token)
                     return Observable_1.Observable.throw(error.json().error || 'Server error');
                 };
-                ProductService.prototype.login = function () {
+                MerchantService.prototype.login = function () {
                     this._httpHeaders.append('Content-Type', 'application/json');
                     this._httpHeaders.append('Authorization', 'Basic ' +
                         btoa('jimmyjlevy@hotmail.com:Ap1632316'));
@@ -75,7 +75,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                         .do(function (data) { return console.log("TODO add -- localStorage.setItem('auth_token', response.Token)"); })
                         .catch(this.handleError);
                 };
-                ProductService.prototype.getMerchantDetails = function () {
+                MerchantService.prototype.getMerchantDetails = function () {
                     this._httpHeaders.append('Content-Type', 'application/json');
                     this._httpHeaders.append('Authorization', 'Basic ' +
                         btoa('jimmyjlevy@hotmail.com:Ap1632316'));
@@ -85,7 +85,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                         .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
                         .catch(this.handleError);
                 };
-                ProductService.prototype.getOffers = function () {
+                MerchantService.prototype.getOffers = function () {
                     this._httpHeaders.append('Content-Type', 'application/json');
                     this._httpHeaders.append('Authorization', 'Basic ' +
                         btoa('jimmyjlevy@hotmail.com:Ap1632316'));
@@ -95,7 +95,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                         .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
                         .catch(this.handleError);
                 };
-                ProductService.prototype.getImages = function () {
+                MerchantService.prototype.getImages = function () {
                     this._httpHeaders.append('Content-Type', 'application/json');
                     // let authToken = localStorage.getItem('auth_token');
                     //  _httpHeaders.append('Authorization', `Bearer ${authToken}`);
@@ -107,7 +107,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                         .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
                         .catch(this.handleError);
                 };
-                ProductService.prototype.signUp = function () {
+                MerchantService.prototype.signUp = function () {
                     this._httpHeaders.append('Content-Type', 'application/json');
                     // let authToken = localStorage.getItem('auth_token');
                     //  _httpHeaders.append('Authorization', `Bearer ${authToken}`);
@@ -119,14 +119,14 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                         .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
                         .catch(this.handleError);
                 };
-                ProductService = __decorate([
+                MerchantService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])
-                ], ProductService);
-                return ProductService;
+                ], MerchantService);
+                return MerchantService;
             }());
-            exports_1("ProductService", ProductService);
+            exports_1("MerchantService", MerchantService);
         }
     }
 });
-//# sourceMappingURL=product.service.js.map
+//# sourceMappingURL=merchant.service.js.map

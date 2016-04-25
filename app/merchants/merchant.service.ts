@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
-export class ProductService {
+export class MerchantService {
     //private _productUrl = 'https://appcard.com/api/merchants/124';
     //private _productUrl = 'https://appcard.com/api/merchants/124:443';
     private _tempUrl: string = 'api/products/products.json'; // temp - ADD HTTP url to webservice here!!!!!
@@ -15,8 +15,8 @@ export class ProductService {
     // Get Merchant Details
     // returns merchant name, logo-image - id, locations
     private merchantId: string = '124';
-    private _getMerchantDetailstUrl = 'https://appcard.com/api/merchants/{merchant-id}'
-    private _getMerchantDetailstUrl2 = 'https://appcard.com/api/merchants/' + this.merchantId;
+    private _getMerchantDetailsUrl = 'https://appcard.com/api/merchants/{merchant-id}'
+    private _getMerchantDetailsUrl2 = 'https://appcard.com/api/merchants/' + this.merchantId;
 
     // Get Images
     // returns images
