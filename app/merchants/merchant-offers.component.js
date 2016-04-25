@@ -37,7 +37,7 @@ System.register(['angular2/core', 'angular2/router', '../merchants/merchant.serv
                     this.pageTitle += ": " + id;
                 }
                 MerchantOffersComponent.prototype.onBack = function () {
-                    this._router.navigate(['Products']);
+                    this._router.navigate(['MerchantDetail']);
                 };
                 MerchantOffersComponent.prototype.ngOnInit = function () {
                     var _this = this;

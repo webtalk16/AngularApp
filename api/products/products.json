@@ -9,9 +9,12 @@
         "LocationName": "Basic Plus First Ave & 84 St",
         "LocationHours":  "Mon-Fri: 8:00am-10:00pm, Saturday: 9:00am-10:00pm, Sunday: 10:00am-10:00pm",
         "MerchantName": "Basic Plus",
+        "lat": -25.363,
+        "lng": 131.044,
         "ImageLogoId": "17",
         "price": 19.95,
         "starRating": 3.2,
+        "logoUrl": "https://www.google.co.il/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
         "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
     },
     {
@@ -24,9 +27,12 @@
         "LocationName": "Basic Plus First Ave & 84 St",
         "LocationHours":  "Mon-Fri: 8:00am-10:00pm, Saturday: 9:00am-10:00pm, Sunday: 10:00am-10:00pm",
         "MerchantName": "Basic Plus",
+        "lat": -25.483,
+        "lng": 131.484,
         "ImageLogoId": "17",
         "price": 32.99,
         "starRating": 4.2,
+        "logoUrl": "https://www.google.co.il/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
         "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
     },
     {
@@ -39,9 +45,12 @@
         "LocationName": "Basic Plus First Ave & 84 St",
         "LocationHours": "Mon-Fri: 8:00am-10:00pm, Saturday: 9:00am-10:00pm, Sunday: 10:00am-10:00pm",
         "MerchantName": "Basic Plus",
+        "lat": -25.983,
+        "lng": 131.984,
         "ImageLogoId": "17",
         "price": 8.9,
         "starRating": 4.8,
+        "logoUrl": "https://www.google.co.il/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
         "imageUrl": "http://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png"
     },
     {
@@ -54,9 +63,12 @@
         "LocationName": "Basic Plus First Ave & 84 St",
         "LocationHours":  "Mon-Fri: 8:00am-10:00pm, Saturday: 9:00am-10:00pm, Sunday: 10:00am-10:00pm",
         "MerchantName": "Basic Plus",
+        "lat": -26.383,
+        "lng": 132.384,
         "ImageLogoId": "17",
         "price": 11.55,
         "starRating": 3.7,
+        "logoUrl": "https://www.google.co.il/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
         "imageUrl": "http://openclipart.org/image/300px/svg_to_png/27070/egore911_saw.png"
     },
     {
@@ -69,9 +81,12 @@
         "LocationName": "Basic Plus First Ave & 84 St",
         "LocationHours":  "Mon-Fri: 8:00am-10:00pm, Saturday: 9:00am-10:00pm, Sunday: 10:00am-10:00pm",
         "MerchantName": "Basic Plus",
+        "lat": -26.883,
+        "lng": 132.884,
         "ImageLogoId": "17",
         "price": 35.95,
         "starRating": 4.6,
+        "logoUrl": "https://www.google.co.il/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
         "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
     }
 ]

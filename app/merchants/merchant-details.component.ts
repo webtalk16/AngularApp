@@ -9,6 +9,7 @@ import { MerchantService } from '../merchants/merchant.service';
     directives: [ROUTER_DIRECTIVES]
 })
 export class MerchantDetailsComponent implements OnInit {
+    mapAppKey: string = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCQv2nPnt7sZnqre0U9Mn7KdhnZiaO4Jrg&callback=initMap';
     imageWidth: number = 50;
     imageMargin: number = 2;
     showImage: boolean = false;
@@ -20,6 +21,22 @@ export class MerchantDetailsComponent implements OnInit {
 
     toggleImage(): void {
         this.showImage = !this.showImage;
+    }
+
+    initMap(Lat, Lng): void {
+        console.log("Lat, Lng" + Lat + " " + Lng);
+        var myLatLng = { lat: Lng, lng: Lng };
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Show hours!'
+        });
     }
 
     ngOnInit(): void {  

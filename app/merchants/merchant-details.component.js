@@ -27,12 +27,26 @@ System.register(['angular2/core', 'angular2/router', '../merchants/merchant.serv
             MerchantDetailsComponent = (function () {
                 function MerchantDetailsComponent(_merchantService) {
                     this._merchantService = _merchantService;
+                    this.mapAppKey = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCQv2nPnt7sZnqre0U9Mn7KdhnZiaO4Jrg&callback=initMap';
                     this.imageWidth = 50;
                     this.imageMargin = 2;
                     this.showImage = false;
                 }
                 MerchantDetailsComponent.prototype.toggleImage = function () {
                     this.showImage = !this.showImage;
+                };
+                MerchantDetailsComponent.prototype.initMap = function (Lat, Lng) {
+                    console.log("Lat, Lng" + Lat + " " + Lng);
+                    var myLatLng = { lat: Lng, lng: Lng };
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 4,
+                        center: myLatLng
+                    });
+                    var marker = new google.maps.Marker({
+                        position: myLatLng,
+                        map: map,
+                        title: 'Show hours!'
+                    });
                 };
                 MerchantDetailsComponent.prototype.ngOnInit = function () {
                     var _this = this;

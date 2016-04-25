@@ -21,7 +21,7 @@ export class MerchantOffersComponent {
     }
 
     onBack(): void {
-        this._router.navigate(['Products']);
+        this._router.navigate(['MerchantDetail']);
     }
 
     ngOnInit(): void {

@@ -17,16 +17,16 @@ enableProdMode();
     <div>
         <nav class='navbar navbar-default' style='background-color:#3d85c6;border-color:#000000'>
             <div class='container-fluid' style='padding:10px 0px;'>
-                <div class='navbar-header'>
+                <div class='navbar-header' style="margin-right:4%">
                     <button class='btn btn-success navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
                         <span class='glyphicon glyphicon-menu-hamburger'></span>
                     </button>
-                    <a class='navbar-brand' style='padding:0px;margin-left:4%'><img src='https://www.google.co.il/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png' class='img-responsive' style='max-height:100%;' /></a>
+                    <a class='navbar-brand' style='padding:0px;margin-left:4%'><img src={{logoUrl}} class='img-responsive' style='max-height:100%;' /></a>
                 </div>
                 
                 <div class='navbar-collapse collapse'>
                     <ul class='nav navbar-nav navbar-right' style='background-color:#FFFFFF;border:1px solid #000000; margin-right:4%;'>
-                        <li><a [routerLink]="['Products']" style='border-right:1px solid #000000; padding-bottom:0px;padding-top:0px;margin-bottom:15px;margin-top:15px;'>General Info</a></li>
+                        <li><a [routerLink]="['MerchantDetail']" style='border-right:1px solid #000000; padding-bottom:0px;padding-top:0px;margin-bottom:15px;margin-top:15px;'>General Info</a></li>
                         <li><a [routerLink]="['MerchantOffers']" style='border-right:1px solid #000000; padding-bottom:0px;padding-top:0px;margin-bottom:15px;margin-top:15px;'>Offers</a></li>
                         <li><a [routerLink]="['SignUp']" style='padding-bottom:0px;padding-top:0px;margin-bottom:15px;margin-top:15px;'>Sign Up</a></li>
                     </ul>
@@ -49,9 +49,22 @@ enableProdMode();
 })
 @RouteConfig([
         { path: '/stores/merchant-id/merchant-name/sign-up', name: 'SignUp', component: SignUpComponent },
-        { path: '/stores/merchant-id/merchant-name', name: 'Products', component: MerchantDetailsComponent, useAsDefault: true },
+        { path: '/stores/merchant-id/merchant-name', name: 'MerchantDetail', component: MerchantDetailsComponent, useAsDefault: true },
         { path: '/stores/merchant-id/merchant-name/offers', name: 'MerchantOffers', component: MerchantOffersComponent }
 ])
 export class AppComponent {
     pageTitle: string = 'Merchant Name'; //"Basic Plus"
+    errorMessage: string;
+    products: any[];
+    logoUrl: string = 'https://www.google.co.il/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png';
+
+    constructor(private _merchantService: MerchantService) {
+    }
+    ngOnInit(): void {
+        console.log('In OnInit');
+        this._merchantService.login()
+            .subscribe(
+            products => this.products = products,
+            error => this.errorMessage = <any>error);
+    }
 }
