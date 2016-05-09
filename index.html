@@ -37,6 +37,20 @@
       });
       System.import('app/main')
             .then(null, console.error.bind(console));
+
+        /*
+        node proxy stuff
+      function ApiService($http) {
+          this.$http = $http;
+          this.url = "/space/";
+      };
+
+      angular.module('app').service('apiService', ApiService);
+
+      ApiService.prototype.getAstronauts = function () {
+          return this.$http.get(this.url)
+      };
+      */
     </script>
 </head>
 
