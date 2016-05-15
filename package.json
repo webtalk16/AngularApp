@@ -12,6 +12,7 @@
         "postinstall": "typings install"
     },
     "license": "ISC",
+	"main": "index.js",
     "dependencies": {
         "angular2": "2.0.0-beta.15",
         "systemjs": "0.19.26",

@@ -29,8 +29,10 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                 function MerchantService(_http) {
                     this._http = _http;
                     //private _productUrl = 'https://appcard.com/api/merchants/124';
-                    //private _productUrl = 'https://appcard.com/api/merchants/124:443';
+                    this._productUrl = 'https://appcard.com/api/merchants/124:443';
                     this._tempUrl = 'api/products/products.json'; // temp - ADD HTTP url to webservice here!!!!!
+                    this._proxyPath = '/proxy_path/'; // temp - ADD HTTP url to webservice here!!!!!
+                    //private _tempUrl: string = 'https://appcard.com/api/users/token'; // temp - ADD HTTP url to webservice here!!!!!
                     // Get Merchant Details
                     // returns merchant name, logo-image - id, locations
                     this.merchantId = '124';
@@ -58,23 +60,25 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     */
                     this._httpHeaders = new http_1.Headers();
                     this.bodyInputData = 'input data'; // TEMP !!!!!!!!!!!!!!
+                    this.tempData = { "username": 'jimmyjlevy@hotmail.com', "password": 'Ap1632316', 'permanent': false };
                 }
                 MerchantService.prototype.handleError = function (error) {
                     console.error(error);
                     //console.log("" + error.id_token)
                     return Observable_1.Observable.throw(error.json().error || 'Server error');
                 };
-                MerchantService.prototype.login = function () {
-                    this._httpHeaders.append('Content-Type', 'application/json');
-                    this._httpHeaders.append('Authorization', 'Basic ' +
-                        btoa('jimmyjlevy@hotmail.com:Ap1632316'));
-                    this._httpHeaders.append('Access-Control-Allow-Origin', '*');
-                    return this._http.get(this._tempUrl, { headers: this._httpHeaders })
-                        .map(function (response) { return response.json(); })
-                        .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
-                        .do(function (data) { return console.log("TODO add -- localStorage.setItem('auth_token', response.Token)"); })
-                        .catch(this.handleError);
-                };
+                //login(): Observable<any[]> {
+                //    this._httpHeaders.append('Content-Type', 'application/json');
+                //    this._httpHeaders.append('Authorization', 'Basic ' +
+                //        btoa('jimmyjlevy@hotmail.com:Ap1632316'));
+                //    this._httpHeaders.append('Access-Control-Allow-Origin', '*');
+                //    return this._http.get(this._tempUrl,
+                //        { headers: this._httpHeaders })
+                //        .map((response: Response) => <any[]>response.json())
+                //        .do(data => console.log("All: " + JSON.stringify(data)))
+                //        .do(data => console.log("TODO add -- localStorage.setItem('auth_token', response.Token)"))
+                //        .catch(this.handleError)
+                //}
                 MerchantService.prototype.getMerchantDetails = function () {
                     this._httpHeaders.append('Content-Type', 'application/json');
                     this._httpHeaders.append('Authorization', 'Basic ' +
@@ -117,6 +121,18 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     return this._http.post(this._tempUrl, 'temp-bodyInputData', { headers: this._httpHeaders })
                         .map(function (response) { return response.json(); })
                         .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
+                        .catch(this.handleError);
+                };
+                MerchantService.prototype.login = function () {
+                    this._httpHeaders.append('Content-Type', 'application/json');
+                    // let authToken = localStorage.getItem('auth_token');
+                    //  _httpHeaders.append('Authorization', `Bearer ${authToken}`);
+                    this._httpHeaders.append('Authorization', 'Basic ' +
+                        btoa('jimmyjlevy@hotmail.com:Ap1632316'));
+                    this._httpHeaders.append('Access-Control-Allow-Origin', '*');
+                    return this._http.post(this._proxyPath, JSON.stringify(this.tempData), { headers: this._httpHeaders })
+                        .map(function (response) { return response.json(); })
+                        .do(function (data) { return console.log("All: " + data); })
                         .catch(this.handleError);
                 };
                 MerchantService = __decorate([

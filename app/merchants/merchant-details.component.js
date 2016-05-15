@@ -49,10 +49,11 @@ System.register(['angular2/core', 'angular2/router', '../merchants/merchant.serv
                     });
                 };
                 MerchantDetailsComponent.prototype.ngOnInit = function () {
-                    var _this = this;
-                    console.log('In OnInit');
-                    this._merchantService.login()
-                        .subscribe(function (products) { return _this.products = products; }, function (error) { return _this.errorMessage = error; });
+                    //console.log('In OnInit - merchant-details.component');
+                    //this._merchantService.login()
+                    //    .subscribe(
+                    //        //products => this.products = products,
+                    //        error => this.errorMessage = <any>error);
                 };
                 MerchantDetailsComponent = __decorate([
                     core_1.Component({

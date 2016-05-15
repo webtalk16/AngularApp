@@ -9,8 +9,10 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class MerchantService {
     //private _productUrl = 'https://appcard.com/api/merchants/124';
-    //private _productUrl = 'https://appcard.com/api/merchants/124:443';
+    private _productUrl = 'https://appcard.com/api/merchants/124:443';
     private _tempUrl: string = 'api/products/products.json'; // temp - ADD HTTP url to webservice here!!!!!
+    private _proxyPath: string = '/proxy_path/'; // temp - ADD HTTP url to webservice here!!!!!
+    //private _tempUrl: string = 'https://appcard.com/api/users/token'; // temp - ADD HTTP url to webservice here!!!!!
     
     // Get Merchant Details
     // returns merchant name, logo-image - id, locations
@@ -52,19 +54,19 @@ export class MerchantService {
         return Observable.throw(error.json().error || 'Server error')
     }
 
-    login(): Observable<any[]> {
-        this._httpHeaders.append('Content-Type', 'application/json');
-        this._httpHeaders.append('Authorization', 'Basic ' +
-            btoa('jimmyjlevy@hotmail.com:Ap1632316'));
-        this._httpHeaders.append('Access-Control-Allow-Origin', '*');
+    //login(): Observable<any[]> {
+    //    this._httpHeaders.append('Content-Type', 'application/json');
+    //    this._httpHeaders.append('Authorization', 'Basic ' +
+    //        btoa('jimmyjlevy@hotmail.com:Ap1632316'));
+    //    this._httpHeaders.append('Access-Control-Allow-Origin', '*');
 
-        return this._http.get(this._tempUrl,
-            { headers: this._httpHeaders })
-            .map((response: Response) => <any[]>response.json())
-            .do(data => console.log("All: " + JSON.stringify(data)))
-            .do(data => console.log("TODO add -- localStorage.setItem('auth_token', response.Token)"))
-            .catch(this.handleError)
-    }
+    //    return this._http.get(this._tempUrl,
+    //        { headers: this._httpHeaders })
+    //        .map((response: Response) => <any[]>response.json())
+    //        .do(data => console.log("All: " + JSON.stringify(data)))
+    //        .do(data => console.log("TODO add -- localStorage.setItem('auth_token', response.Token)"))
+    //        .catch(this.handleError)
+    //}
 
     getMerchantDetails(): Observable<any[]> {
         this._httpHeaders.append('Content-Type', 'application/json');
@@ -120,6 +122,23 @@ export class MerchantService {
             { headers: this._httpHeaders })
             .map((response: Response) => <any[]>response.json())
             .do(data => console.log("All: " + JSON.stringify(data)))
+            .catch(this.handleError)
+    }
+
+    private tempData = { "username": 'jimmyjlevy@hotmail.com', "password": 'Ap1632316', 'permanent': false };
+    login(): Observable<any[]> {
+        this._httpHeaders.append('Content-Type', 'application/json');
+        // let authToken = localStorage.getItem('auth_token');
+        //  _httpHeaders.append('Authorization', `Bearer ${authToken}`);
+        this._httpHeaders.append('Authorization', 'Basic ' +
+            btoa('jimmyjlevy@hotmail.com:Ap1632316'));
+        this._httpHeaders.append('Access-Control-Allow-Origin', '*');
+
+        return this._http.post(this._proxyPath,
+            JSON.stringify(this.tempData),
+            { headers: this._httpHeaders })
+            .map((response: Response) => <any[]>response.json())
+            .do(data => console.log("All: " + data))
             .catch(this.handleError)
     }
 }

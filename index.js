@@ -1,17 +1,18 @@
 ﻿/***** Node Server *****/
-
+console.log("/***** Node Server *****/");
 // Module dependencies.
 var express = require('express');
 var httpProxy = require('http-proxy');
 var bodyParser = require('body-parser');
 
-var apiForwardingUrl = 'https://appcard.com/api/'; //// TODO add end of path depending on api
+var apiForwardingUrl = 'https://appcard.com/api/users/token'; //// TODO add end of path depending on api
 
 var proxyOptions = {
     changeOrigin: true
 };
 
 httpProxy.prototype.onError = function (err) {
+    console.log('@@@@@@@@@@@ httpProxy.prototype.onError (node server) error @@@@@@@@@@@ index.js');
     console.log(err);
 };
 
@@ -22,9 +23,12 @@ console.log('Forwarding API requests to ' + apiForwardingUrl);
 // Node express server setup.
 var server = express();
 server.set('port', 3000);
-server.use(express.static(__dirname + '/app'));
+server.use(express.static(__dirname)); //__dirname + '/app')
 
-server.all("/space/*", function (req, res) {
+server.all("/proxy_path/*", function (req, res) {
+    console.dir("@@@@@@@@@@@@ req obj ==" + req);
+    console.dir("@@@@@@@@@@@@ res obj ==" + res);
+
     apiProxy.web(req, res, { target: apiForwardingUrl });
 });
 

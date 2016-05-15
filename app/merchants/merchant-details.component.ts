@@ -40,10 +40,10 @@ export class MerchantDetailsComponent implements OnInit {
     }
 
     ngOnInit(): void {  
-        console.log('In OnInit');
-        this._merchantService.login()
-            .subscribe(
-                products => this.products = products,
-                error => this.errorMessage = <any>error);
+        //console.log('In OnInit - merchant-details.component');
+        //this._merchantService.login()
+        //    .subscribe(
+        //        //products => this.products = products,
+        //        error => this.errorMessage = <any>error);
     }
 }
